@@ -6,13 +6,14 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 20:26:45 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/24 17:03:09 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/27 19:56:43 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 #include "../include/ft_printf.h"
 #include "../include/get_next_line.h"
+#include "../include/fractol.h"
 #include <mlx.h>
 #include <math.h>
 // #include </X11/keysymdef.h>
@@ -37,8 +38,8 @@ void	mj_mlx_pixel_put(t_data *data, int x, int y, int colour)
 
 int	deal_key(int keycode, void *param)
 {
-	printf("Keycode: %d\n", keycode);
-	// mlx_pixel_put()
+	ft_printf("Keycode: %d\n", keycode);
+	// mlx_pixel_put();
 	if (param == NULL)
 		return (0);
 	return (0);
@@ -82,11 +83,11 @@ int	main(void)
 
 	mlx_ptr = mlx_init();
 
-	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "Wow");
+	mlx_win = mlx_new_window(mlx_ptr, WIN_LEN, WIN_HT, WIN_NAME);
 
 	// mlx_pixel_put(mlx_ptr, mlx_win, 250, 250, 0xCB329F);
 
-	draw_line(mlx_ptr, mlx_win, 250, 0, 250, 0, 0xFFFFFF);
+	draw_line(mlx_ptr, mlx_win, 0, WIN_LEN, 0, WIN_HT, 0xFFFFFF);
 
 	mlx_key_hook(mlx_win, deal_key, (void *)0);
 
