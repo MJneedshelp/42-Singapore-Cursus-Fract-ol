@@ -17,32 +17,7 @@
 #include <mlx.h>
 #include <math.h>
 
-/* Description: Initialises the fract structure.
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-*/
 
-t_fract	*init_fract(void)
-{
-	t_fract	*fract;
-
-	fract = (t_fract *)malloc(sizeof(t_fract));
-	if (fract == NULL)
-		exit (EXIT_FAILURE);
-	fract->mlx_ptr = mlx_init();
-	if (fract->mlx_ptr == NULL)
-	{
-		free (fract);
-		exit (EXIT_FAILURE);
-	}
-	fract->mlx_win = mlx_new_window(fract->mlx_ptr, WIN_LEN, WIN_HT, WIN_NAME);
-	if (fract->mlx_win == NULL)
-	{
-		free (fract->mlx_ptr);
-		free (fract);
-		exit (EXIT_FAILURE);
-	}
-	return (fract);
-}
 
 
 
@@ -54,6 +29,8 @@ int	deal_key(int keycode, void *param)
 	fract = (t_fract *)param;
 	ft_printf("Keycode: %d\n", keycode);
 	mlx_pixel_put(fract->mlx_ptr, fract->mlx_win, keycode/10, keycode/10, 0xFFFFFF);
+	if (keycode == 65307)
+		end_prog(fract);
 	return (0);
 }
 

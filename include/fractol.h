@@ -27,5 +27,8 @@ typedef struct s_fract
 }	t_fract;
 
 
+/* Utility functions */
+t_fract	*init_fract(void);
+void	end_prog(t_fract *fract);
 
 #endif
