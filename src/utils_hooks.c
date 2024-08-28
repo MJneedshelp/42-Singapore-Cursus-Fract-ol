@@ -23,3 +23,8 @@ int	hook_no_event(void)
 {
 	return (0);
 }
+
+int	hook_key_event(int keysym, t_fract *fract)
+{
+	if (keysym == XK_Esca)
+}
