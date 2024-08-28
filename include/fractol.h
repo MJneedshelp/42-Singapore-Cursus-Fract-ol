@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/27 19:31:34 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/28 13:29:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <X11/keysym.h>
+# include <X11/X.h>
 
 # define WIN_HT 720
 # define WIN_LEN 1280
@@ -35,5 +36,13 @@ void	end_prog(t_fract *fract);
 
 /* Hook functions */
 int		hook_no_event(void);
+int		hook_key_event(int keysym, t_fract *fract);
+int		hook_mouse_event(int button, int x, int y, t_fract *fract);
+
+int		hook_keypress(int keysym, t_fract *fract);
+int		hook_keyrelease(int keysym, t_fract *fract);
+
+/* Window management functions */
+int		close_window(t_fract *fract);
 
 #endif
