@@ -15,6 +15,7 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <X11/keysym.h>
 
 # define WIN_HT 720
 # define WIN_LEN 1280
@@ -23,12 +24,16 @@
 typedef struct s_fract
 {
 	void	*mlx_ptr;
-	void	*mlx_win;
+	void	*win_ptr;
 }	t_fract;
 
 
 /* Utility functions */
 t_fract	*init_fract(void);
 void	end_prog(t_fract *fract);
+
+
+/* Hook functions */
+int		hook_no_event(void);
 
 #endif

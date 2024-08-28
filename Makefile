@@ -21,7 +21,7 @@ NAME = fractol
 SRCDIR = src
 LIBDIR = $(SRCDIR)/libft
 LIBFT_LIB = $(LIBDIR)/libft.a
-FRACTOL_SRCS = $(SRCDIR)/main.c $(SRCDIR)/utils_1.c #double check later
+FRACTOL_SRCS = $(SRCDIR)/main.c $(SRCDIR)/utils_init.c $(SRCDIR)/utils_hooks.c 	#double check later
 FRACTOL_OBJ = $(FRACTOL_SRCS:.c=.o)
 
 # Target to make using Make all

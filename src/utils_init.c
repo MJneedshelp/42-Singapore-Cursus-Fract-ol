@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_1.c                                          :+:      :+:    :+:   */
+/*   utils_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -31,14 +31,14 @@ t_fract	*init_fract(void)
 	fract->mlx_ptr = mlx_init();
 	if (fract->mlx_ptr == NULL)
 	{
-		free (fract);
+		free (fract);					//Probably write a clean up function here
 		exit (EXIT_FAILURE);
 	}
-	fract->mlx_win = mlx_new_window(fract->mlx_ptr, WIN_LEN, WIN_HT, WIN_NAME);
-	if (fract->mlx_win == NULL)
+	fract->win_ptr = mlx_new_window(fract->mlx_ptr, WIN_LEN, WIN_HT, WIN_NAME);
+	if (fract->win_ptr == NULL)
 	{
 		free (fract->mlx_ptr);
-		free (fract);
+		free (fract);					//Probably write a clean up function here
 		exit (EXIT_FAILURE);
 	}
 	return (fract);
@@ -47,7 +47,6 @@ t_fract	*init_fract(void)
 
 void	end_prog(t_fract *fract)
 {
-	mlx_destroy_window(fract->mlx_ptr, fract->mlx_win);
 	mlx_destroy_display(fract->mlx_ptr);
 	free (fract->mlx_ptr);
 	free (fract);
