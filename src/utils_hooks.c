@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:13:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/29 02:32:56 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/29 09:38:03 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	hook_no_event(t_fract *fract)
 {
 	if (fract->win_ptr != NULL)
 	{
-		// mlx_pixel_put(fract->mlx_ptr, fract->win_ptr, WIN_LEN / 2, WIN_HT / 2, COLOR_RED);
 		draw_bkground(fract);
 		draw_rect(fract, (t_rect){WIN_LEN - 100, WIN_HT - 100, 100, 100, COLOR_GREEN});
 		draw_rect(fract, (t_rect){0, 0, 100, 100, COLOR_RED});

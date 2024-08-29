@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/29 02:54:47 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/29 13:00:48 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@
 # define COLOR_GREEN 0x00FF00
 # define COLOR_WHITE 0xFFFFFF
 
-typedef struct s_fract
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	*img;
-}	t_fract;
-
 typedef struct s_img
 {
 	void	*mlx_img;
@@ -40,6 +33,15 @@ typedef struct s_img
 	int		line_len;
 	int		endian;
 }	t_img;
+
+typedef struct s_fract
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	*img;
+}	t_fract;
+
+
 
 
 
