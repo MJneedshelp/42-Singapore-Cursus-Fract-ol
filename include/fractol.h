@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/29 13:00:48 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/29 16:41:52 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_fract
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_img	*img;
+	t_img	img;
 }	t_fract;
 
 
@@ -71,7 +71,7 @@ int		hook_mouse_event(int button, int x, int y, t_fract *fract);
 int		hook_keypress(int keysym, t_fract *fract);
 int		hook_keyrelease(int keysym, t_fract *fract);
 
-int		draw_rect(t_fract *fract, t_rect rect);
+// int		draw_rect(t_fract *fract, t_rect rect);
 
 /* Window management functions */
 int		close_window(t_fract *fract);
