@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:20:22 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/28 13:30:34 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/29 01:42:48 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@
 
 
 
-int	deal_key(int keycode, void *param)
-{
-	t_fract	*fract;
-
-	fract = (t_fract *)param;
-	ft_printf("Keycode: %d\n", keycode);
-	mlx_pixel_put(fract->mlx_ptr, fract->win_ptr, keycode/10, keycode/10, 0xFFFFFF);
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(fract->mlx_ptr, fract->win_ptr);
-		printf("Window destroyed\n");
-	}
-	return (0);
-}
 
 
 
@@ -46,7 +32,7 @@ int	main(void)
 
 	fract = init_fract();
 
-	mlx_loop_hook(fract->mlx_ptr, &hook_no_event, NULL);
+	mlx_loop_hook(fract->mlx_ptr, &hook_no_event, fract);
 
 	// mlx_key_hook(fract->win_ptr, &hook_key_event, fract);
 

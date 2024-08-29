@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 01:09:25 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/28 01:09:25 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/29 03:32:56 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ t_fract	*init_fract(void)
 		free (fract);					//Probably write a clean up function here
 		exit (EXIT_FAILURE);
 	}
+	fract->img->mlx_img = mlx_new_image(fract->mlx_ptr, WIN_LEN, WIN_HT);
+
+	
 	return (fract);
 }
 

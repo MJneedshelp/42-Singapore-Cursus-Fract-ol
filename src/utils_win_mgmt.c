@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:27:19 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/28 13:28:43 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/29 01:08:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 int	close_window(t_fract *fract)
 {
 	mlx_destroy_window(fract->mlx_ptr, fract->win_ptr);
+	fract->win_ptr = NULL;
 	return (0);
 }
