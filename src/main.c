@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:20:22 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/29 16:41:54 by mintan           ###   ########.fr       */
+/*   Updated: 2024/08/30 11:07:16 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(void)
 
 
 
-	mlx_loop_hook(fract->mlx_ptr, &hook_no_event, fract);
 
 	// mlx_key_hook(fract->win_ptr, &hook_key_event, fract);
 
@@ -46,6 +45,7 @@ int	main(void)
 	mlx_hook(fract->win_ptr, KeyPress, KeyPressMask, &hook_keypress, fract);
 	mlx_hook(fract->win_ptr, KeyRelease, KeyReleaseMask, &hook_keyrelease, fract);
 	mlx_hook(fract->win_ptr, DestroyNotify, NoEventMask, close_window, fract);
+	mlx_loop_hook(fract->mlx_ptr, &hook_no_event, fract);
 
 
 	mlx_loop(fract->mlx_ptr);
