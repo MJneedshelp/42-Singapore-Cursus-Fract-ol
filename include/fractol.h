@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/08/31 17:59:42 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/01 18:01:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define WIN_HT 720
 # define WIN_LEN 1280
 # define WIN_NAME "fract-ol"
+# define DEF_ITER 20
 # define COLOR_RED 0xFF0000
 # define COLOR_GREEN 0x00FF00
 # define COLOR_WHITE 0xFFFFFF
@@ -41,7 +42,11 @@ typedef struct s_fract
 	t_img	img;
 }	t_fract;
 
-
+typedef struct s_cmplx_number
+{
+	double	re;
+	double	img;
+}	t_cmplx;
 
 
 
@@ -75,5 +80,23 @@ int		hook_keyrelease(int keysym, t_fract *fract);
 
 /* Window management functions */
 int		close_window(t_fract *fract);
+
+
+
+
+
+/* Complex number operations */
+t_cmplx	sqr_cmplx(t_cmplx input);
+t_cmplx	sum_cmplx(t_cmplx input1, t_cmplx input2);
+double	magnitude_cmplx(t_cmplx input);
+
+
+
+/* Mandelbrot set functions */
+
+
+
+
+
 
 #endif
