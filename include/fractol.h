@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/01 18:01:27 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/02 13:26:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define WIN_HT 720
-# define WIN_LEN 1280
+# define WIN_HT 400.0
+# define WIN_LEN 500.0
 # define WIN_NAME "fract-ol"
 # define DEF_ITER 20
+# define COMPLEX_MAX_A 2.0
+# define COMPLEX_MAX_B 2.0
 # define COLOR_RED 0xFF0000
 # define COLOR_GREEN 0x00FF00
 # define COLOR_WHITE 0xFFFFFF
