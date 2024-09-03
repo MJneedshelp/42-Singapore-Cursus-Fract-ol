@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 09:10:59 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/03 08:19:37 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/03 09:00:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	check_mandelbrot(t_cmplx input, int no_iter)
 	while (i < no_iter)
 	{
 		term = sum_cmplx(sqr_cmplx(term), input);
-		printf("magnitude: %f\n", magnitude_cmplx(term));
 		i++;
 		if (magnitude_cmplx(term) > 2)
 			return (i);
@@ -80,18 +79,18 @@ int	draw_mandelbrot(t_img *img)
 	}
 }
 
-int	main(void)
-{
-	t_cmplx	input1;
-	t_cmplx	input2;
-	int		no_iter;
+// int	main(void)
+// {
+// 	t_cmplx	input1;
+// 	t_cmplx	input2;
+// 	int		no_iter;
 
-	no_iter = 20;
-	input1.re = 0.3;
-	input1.img = 0.5;
-	input2.re = -0.123;
-	input2.img = 0.745;
-	printf("Input 1: %f + (%f)i | Part of Mandelbrot set: %d\n", input1.re, input1.img, check_mandelbrot(input1, no_iter));
-	printf("Input 2: %f + (%f)i | Part of Mandelbrot set: %d\n", input2.re, input2.img, check_mandelbrot(input2, no_iter));
-	return (0);
-}
+// 	no_iter = 20;
+// 	input1.re = 0.3;
+// 	input1.img = 0.5;
+// 	input2.re = -0.123;
+// 	input2.img = 0.745;
+// 	printf("Input 1: %f + (%f)i | Part of Mandelbrot set: %d\n", input1.re, input1.img, check_mandelbrot(input1, no_iter));
+// 	printf("Input 2: %f + (%f)i | Part of Mandelbrot set: %d\n", input2.re, input2.img, check_mandelbrot(input2, no_iter));
+// 	return (0);
+// }
