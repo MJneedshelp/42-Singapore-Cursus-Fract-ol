@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/03 08:19:06 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/03 08:21:31 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,9 @@ t_cmplx	tf_pixel_to_cmplx(int x, int y);
 
 
 /* Mandelbrot set functions */
+int	check_mandelbrot(t_cmplx input, int no_iter);
+int	draw_mandelbrot(t_img *img);
+
 
 
 
