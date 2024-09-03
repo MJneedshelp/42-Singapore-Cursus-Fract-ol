@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/02 13:26:33 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/03 08:19:06 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define COLOR_RED 0xFF0000
 # define COLOR_GREEN 0x00FF00
 # define COLOR_WHITE 0xFFFFFF
+# define COLOR_BLACK 0x000000
 
 typedef struct s_img
 {
@@ -78,6 +79,9 @@ int		hook_mouse_event(int button, int x, int y, t_fract *fract);
 int		hook_keypress(int keysym, t_fract *fract);
 int		hook_keyrelease(int keysym, t_fract *fract);
 
+void	img_pixel_put(t_img *img, int x, int y, int color);
+
+
 // int		draw_rect(t_fract *fract, t_rect rect);
 
 /* Window management functions */
@@ -91,6 +95,8 @@ int		close_window(t_fract *fract);
 t_cmplx	sqr_cmplx(t_cmplx input);
 t_cmplx	sum_cmplx(t_cmplx input1, t_cmplx input2);
 double	magnitude_cmplx(t_cmplx input);
+t_cmplx	tf_pixel_to_cmplx(int x, int y);
+
 
 
 

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 08:36:55 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/02 13:51:40 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/03 08:13:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ t_cmplx	tf_pixel_to_cmplx(int x, int y)
 {
 	t_cmplx	res;
 
-	// printf("Max A: %f | WIN_Len: %f \n", COMPLEX_MAX_A, WIN_LEN);
 	res.re = (double)x * ((2 * COMPLEX_MAX_A) / WIN_LEN) - COMPLEX_MAX_A;
 	res.img = (double)y * ((-2 * COMPLEX_MAX_B) / WIN_HT) + COMPLEX_MAX_B;
-	// printf("Result: (%f, %f)\n", res.re, res.img);
 	return (res);
 }
 
