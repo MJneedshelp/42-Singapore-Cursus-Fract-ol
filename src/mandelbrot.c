@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 09:10:59 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/03 09:00:13 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/05 06:49:20 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,19 @@ int	draw_mandelbrot(t_img *img)
 	int		y;
 	t_cmplx	pix;
 
+	t_tf_fact	fact;
+
+	fact.mag = 0.25;
+	fact.or_a = 0.025;
+	fact.or_b = 0.0;
+
 	x = 0;
 	while (x < WIN_LEN)
 	{
 		y = 0;
 		while (y < WIN_HT)
 		{
-			pix = tf_pixel_to_cmplx(x, y);
+			pix = tf_pixel_to_cmplx(x, y, fact);
 			if (check_mandelbrot(pix, DEF_ITER) == 0)
 				img_pixel_put(img, x, y, COLOR_BLACK);
 			else
