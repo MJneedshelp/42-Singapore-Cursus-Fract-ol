@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/05 06:28:05 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/05 20:28:44 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define WIN_HT 800.0
+# define WIN_HT 600.0
 # define WIN_LEN 800.0
 # define WIN_NAME "fract-ol"
-# define DEF_ITER 42
+# define DEF_ITER 750
 # define U_A 4.0
-# define U_B 4.0
+# define U_B 3.0
+# define MAG_STEP 1.1
+# define TRANS_STEP 0.01
+# define ITER_STEP 1.01
 # define COLOR_RED 0xFF0000
 # define COLOR_GREEN 0x00FF00
 # define COLOR_WHITE 0xFFFFFF
@@ -43,6 +46,10 @@ typedef struct s_fract
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
+	double	or_a;
+	double	or_b;
+	double	mag;
+	double	iter;
 }	t_fract;
 
 typedef struct s_cmplx_number
@@ -102,14 +109,14 @@ int		close_window(t_fract *fract);
 t_cmplx	sqr_cmplx(t_cmplx input);
 t_cmplx	sum_cmplx(t_cmplx input1, t_cmplx input2);
 double	magnitude_cmplx(t_cmplx input);
-t_cmplx	tf_pixel_to_cmplx(int p_x, int p_y, t_tf_fact fact);
+t_cmplx	tf_pixel_to_cmplx(int p_x, int p_y, t_fract *fract);
 
 
 
 
 /* Mandelbrot set functions */
 int	check_mandelbrot(t_cmplx input, int no_iter);
-int	draw_mandelbrot(t_img *img);
+int	draw_mandelbrot(t_img *img, t_fract *fract);
 
 
 

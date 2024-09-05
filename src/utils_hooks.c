@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:13:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/03 08:55:41 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/05 20:29:21 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	hook_no_event(t_fract *fract)
 		// draw_bkground(&(fract->img));
 		// draw_rect(&(fract->img), (t_rect){WIN_LEN - 100, WIN_HT - 100, 100, 100, COLOR_GREEN});
 		// draw_rect(&(fract->img), (t_rect){0, 0, 100, 100, COLOR_RED});
-		draw_mandelbrot(&(fract->img));
+		draw_mandelbrot(&(fract->img), fract);
 		mlx_put_image_to_window(fract->mlx_ptr, fract->win_ptr, fract->img.mlx_img, 0, 0);
 
 		// draw_rect(fract);
@@ -104,6 +104,16 @@ int	hook_key_event(int keysym, t_fract *fract)
 int	hook_mouse_event(int button, int x, int y, t_fract *fract)
 {
 	printf("Button: %d | position x: %d y: %d\n", button, x, y);
+	if (button == 5)
+	{
+		fract->mag = (fract->mag) / MAG_STEP;
+		fract->iter = (fract->iter) / ITER_STEP;
+	}
+	else if (button == 4)
+	{
+		fract->mag = (fract->mag) * MAG_STEP;
+		fract->iter = (fract->iter) * ITER_STEP;
+	}
 	return (0);
 }
 
@@ -113,6 +123,14 @@ int	hook_keypress(int keysym, t_fract *fract)
 	printf("Key pressed\n");
 	if (keysym == XK_Escape)
 		close_window(fract);
+	else if (keysym == XK_Up)
+		fract->or_b = fract->or_b - TRANS_STEP;
+	else if (keysym == XK_Down)
+		fract->or_b = fract->or_b + TRANS_STEP;
+	else if (keysym == XK_Right)
+		fract->or_a = fract->or_a - TRANS_STEP;
+	else if (keysym = XK_Left)
+		fract->or_a = fract->or_a + TRANS_STEP;
 	return (0);
 }
 

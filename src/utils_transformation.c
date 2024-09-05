@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 08:36:55 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/05 06:45:32 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/05 19:46:39 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,12 @@
 
 */
 
-t_cmplx	tf_pixel_to_cmplx(int p_x, int p_y, t_tf_fact fact)
+t_cmplx	tf_pixel_to_cmplx(int p_x, int p_y, t_fract *fract)
 {
 	t_cmplx	res;
 
-	// res.re = (double)p_x * ((2 * COMPLEX_MAX_A) / WIN_LEN) - COMPLEX_MAX_A;
-	// res.img = (double)p_y * ((-2 * COMPLEX_MAX_B) / WIN_HT) + COMPLEX_MAX_B;
-	res.re = fact.mag * ((double)p_x / WIN_LEN * U_A - (U_A / 2)) + fact.or_a;
-	res.img = fact.mag * ((double)-p_y / WIN_HT * U_B + (U_B / 2)) + fact.or_b;
-
+	res.re = fract->mag * ((double)p_x / WIN_LEN * U_A - (U_A / 2)) + fract->or_a;
+	res.img = fract->mag * ((double)-p_y / WIN_HT * U_B + (U_B / 2)) + fract->or_b;
 	return (res);
 }
 

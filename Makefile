@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 22:10:59 by mintan            #+#    #+#              #
-#    Updated: 2024/09/03 08:59:23 by mintan           ###   ########.fr        #
+#    Updated: 2024/09/05 20:16:13 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra #-Werror
 MLXFLAGS = -Lminilibx-linux -lmlx -lXext -L/usr/lib/X11 -lX11 \
-           -lm -lz -Iminilibx-linux
+           -lm -lz -Iminilibx-linux -O3
 
 # Definitions
 NAME = fractol

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:20:22 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/01 18:29:00 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/05 19:46:31 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 #include "../include/fractol.h"
 #include <mlx.h>
 #include <math.h>
-
-
-
-
 
 
 
@@ -42,7 +38,7 @@ int	main(void)
 
 	mlx_loop_hook(fract->mlx_ptr, &hook_no_event, fract);
 	mlx_loop(fract->mlx_ptr);
-
+	printf("Magnification Factor: %f | Origin a: %f | Origin b: %f\n", fract->mag, fract->or_a, fract->or_b);
 
 	end_prog(fract);
 }

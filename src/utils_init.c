@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 01:09:25 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/03 08:56:56 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/05 20:19:41 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ t_fract	*init_fract(void)
 	}
 	fract->img.mlx_img = mlx_new_image(fract->mlx_ptr, WIN_LEN, WIN_HT);
 	fract->img.addr = mlx_get_data_addr(fract->img.mlx_img, &(fract->img.bpp), &(fract->img.line_len), &(fract->img.endian));
+	fract->or_a = 0.0;
+	fract->or_b = 0.0;
+	fract->mag = 1.0;
+	fract->iter = DEF_ITER;
 	printf("Bits per pixel: %d | line size: %d | endian: %d\n", fract->img.bpp, fract->img.line_len, fract->img.endian);
 
 
@@ -62,4 +66,5 @@ void	end_prog(t_fract *fract)
 	free (fract);
 	//Probably need to clear up the img pointer as well
 	exit (EXIT_SUCCESS);
+
 }
