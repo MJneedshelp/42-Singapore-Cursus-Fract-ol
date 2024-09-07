@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/07 09:09:01 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 15:53:46 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 
 # define WIN_HT 600.0
 # define WIN_LEN 800.0
 # define WIN_NAME "fract-ol"
-# define DEF_ITER 750
+# define DEF_ITER 42
 # define U_A 4.0
 # define U_B 3.0
 # define MAG_STEP 1.1
-# define TRANS_STEP 0.01
-# define ITER_STEP 1.01
+# define TRANS_STEP 0.25
+# define ITER_STEP 1.01 //iteration probably has to scale linearly cos it needs to be an integer
 # define COLOR_RED 0xFF0000
 # define COLOR_GREEN 0x00FF00
 # define COLOR_WHITE 0xFFFFFF
@@ -49,7 +50,7 @@ typedef struct s_fract
 	double	or_a;
 	double	or_b;
 	double	mag;
-	double	iter;
+	int		iter;
 	int		event;
 }	t_fract;
 
@@ -59,30 +60,13 @@ typedef struct s_cmplx_number
 	double	img;
 }	t_cmplx;
 
-typedef struct s_transformation_factors
-{
-	double	or_a;
-	double	or_b;
-	double	mag;
-}	t_tf_fact;
-
-
-
-typedef struct s_rect
-{
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-	int	colour;
-}	t_rect;
 
 
 
 
 
 /* Utility functions */
-t_fract	*init_fract(void);
+t_fract	init_fract(void);
 void	end_prog(t_fract *fract);
 
 

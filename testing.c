@@ -14,4 +14,5 @@ int	main(void)
 	color_code = encode_rgb(245, 209, 66);
 
 	printf("Colour code: %d\n", color_code);
+	perror("test");
 }
