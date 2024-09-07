@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:13:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/05 20:29:21 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 09:10:37 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,63 +27,16 @@ void	img_pixel_put(t_img *img, int x, int y, int color)
 }
 
 
-int	draw_rect(t_img *img, t_rect rect)
-{
-	int	i;
-	int	j;
-
-	i = rect.x;
-	while (i < rect.x + rect.width)
-	{
-		j = rect.y;
-		while (j < rect.y + rect.height)
-		{
-			img_pixel_put(img, i, j, rect.colour);
-			j++;
-		}
-		i++;
-	}
-}
-
-
-
-int	draw_bkground(t_img *img)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < WIN_LEN)
-	{
-		j = 0;
-		while (j < WIN_HT)
-		{
-			img_pixel_put(img, i, j, COLOR_WHITE);
-			// mlx_pixel_put(fract->mlx_ptr, fract->win_ptr, i, j, COLOR_WHITE);
-			j++;
-		}
-		i++;
-	}
-}
-
-
-
 /* Description: function to be used in mlx_loop_hook when there are no events
+   XXXXXXX
 */
 int	hook_no_event(t_fract *fract)
 {
-	if (fract->win_ptr != NULL)
+	if (fract->win_ptr != NULL && fract->event == 1)
 	{
-		// draw_bkground(fract);
-		// draw_rect(fract, (t_rect){WIN_LEN - 100, WIN_HT - 100, 100, 100, COLOR_GREEN});
-		// draw_rect(fract, (t_rect){0, 0, 100, 100, COLOR_RED});
-		// draw_bkground(&(fract->img));
-		// draw_rect(&(fract->img), (t_rect){WIN_LEN - 100, WIN_HT - 100, 100, 100, COLOR_GREEN});
-		// draw_rect(&(fract->img), (t_rect){0, 0, 100, 100, COLOR_RED});
 		draw_mandelbrot(&(fract->img), fract);
 		mlx_put_image_to_window(fract->mlx_ptr, fract->win_ptr, fract->img.mlx_img, 0, 0);
-
-		// draw_rect(fract);
+		fract->event = 0;
 	}
 	return (0);
 }
@@ -108,19 +61,21 @@ int	hook_mouse_event(int button, int x, int y, t_fract *fract)
 	{
 		fract->mag = (fract->mag) / MAG_STEP;
 		fract->iter = (fract->iter) / ITER_STEP;
+		fract->event = 1;
 	}
 	else if (button == 4)
 	{
 		fract->mag = (fract->mag) * MAG_STEP;
 		fract->iter = (fract->iter) * ITER_STEP;
+		fract->event = 1;
 	}
 	return (0);
 }
 
-
 int	hook_keypress(int keysym, t_fract *fract)
 {
-	printf("Key pressed\n");
+	printf("Key: %d pressed\n", keysym);
+	fract->event = 1;
 	if (keysym == XK_Escape)
 		close_window(fract);
 	else if (keysym == XK_Up)

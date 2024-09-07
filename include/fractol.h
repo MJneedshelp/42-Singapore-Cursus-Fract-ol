@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/05 20:28:44 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 09:09:01 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_fract
 	double	or_b;
 	double	mag;
 	double	iter;
+	int		event;
 }	t_fract;
 
 typedef struct s_cmplx_number

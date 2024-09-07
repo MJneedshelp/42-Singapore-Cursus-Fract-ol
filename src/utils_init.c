@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 01:09:25 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/05 20:19:41 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 09:06:05 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_fract	*init_fract(void)
 	fract->or_b = 0.0;
 	fract->mag = 1.0;
 	fract->iter = DEF_ITER;
+	fract->event = 1;
 	printf("Bits per pixel: %d | line size: %d | endian: %d\n", fract->img.bpp, fract->img.line_len, fract->img.endian);
 
 
