@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/07 15:53:46 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 19:37:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,15 @@ typedef struct s_cmplx_number
 
 
 
+/* Initialisation functions */
+t_fract	init_fract(void);
+void	init_parameters(t_fract *fract);
 
 
 
 /* Utility functions */
-t_fract	init_fract(void);
-void	end_prog(t_fract *fract);
+
+void	end_prog(t_fract fract);
 
 
 /* Hook functions */
@@ -94,14 +97,14 @@ int		close_window(t_fract *fract);
 t_cmplx	sqr_cmplx(t_cmplx input);
 t_cmplx	sum_cmplx(t_cmplx input1, t_cmplx input2);
 double	magnitude_cmplx(t_cmplx input);
-t_cmplx	tf_pixel_to_cmplx(int p_x, int p_y, t_fract *fract);
+t_cmplx	tf_pixel_to_cmplx(int p_x, int p_y, t_fract fract);
 
 
 
 
 /* Mandelbrot set functions */
 int	check_mandelbrot(t_cmplx input, int no_iter);
-int	draw_mandelbrot(t_img *img, t_fract *fract);
+int	draw_mandelbrot(t_img *img, t_fract fract);
 
 
 

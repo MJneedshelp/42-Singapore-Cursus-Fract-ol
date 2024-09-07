@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 01:09:25 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/07 18:23:02 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 19:26:21 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,20 @@ void	check_inputs(int argc, char* argv[])
 	}
 }
 
+/* Desciption: Sets the initial parameters for rendering:
+	- or_a: origin of a - real on the complex plane
+	- or_b: origina of b - imaginary on the complex plane
+	- mag: magnification. A lower number corresponds to higher zoom
+	- iter: number of iterations
+*/
+void	init_parameters(t_fract *fract)
+{	fract->or_a = -0.5;
+	fract->or_b = 0.0;
+	fract->mag = 1.0;
+	fract->iter = DEF_ITER;
+}
+
+
 /* Description: Initialises the fract structure.
    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 */
@@ -92,13 +106,12 @@ t_fract	init_fract(void)
 	fract.img.mlx_img = mlx_new_image(fract.mlx_ptr, WIN_LEN, WIN_HT);
 	fract.img.addr = mlx_get_data_addr(fract.img.mlx_img, &(fract.img.bpp),\
 	&(fract.img.line_len), &(fract.img.endian));
-	fract.or_a = -0.5;
-	fract.or_b = 0.0;
-	fract.mag = 1.0;
-	fract.iter = DEF_ITER;
+	init_parameters(&fract);
 	fract.event = 1;
 	return (fract);
 }
+
+
 
 
 
@@ -161,12 +174,17 @@ t_fract	init_fract(void)
 
 void	end_prog(t_fract fract)
 {
+	mlx_destroy_window(fract.mlx_ptr, fract.win_ptr);
+	fract.win_ptr = NULL;
+
 	mlx_destroy_display(fract.mlx_ptr);
 	mlx_destroy_image(fract.mlx_ptr, &fract.img);
 	free (fract.mlx_ptr);
 	free (fract.img.addr);
 	free (fract.img.mlx_img);
 	//Probably need to clear up the img pointer as well
+
+
 	exit (EXIT_SUCCESS);
 
 }

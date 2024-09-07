@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 22:10:59 by mintan            #+#    #+#              #
-#    Updated: 2024/09/05 20:16:13 by mintan           ###   ########.fr        #
+#    Updated: 2024/09/07 19:40:42 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME = fractol
 SRCDIR = src
 LIBDIR = $(SRCDIR)/libft
 LIBFT_LIB = $(LIBDIR)/libft.a
-FRACTOL_SRCS = $(SRCDIR)/main.c $(SRCDIR)/utils_init.c $(SRCDIR)/utils_hooks.c \
+FRACTOL_SRCS = $(SRCDIR)/main.c $(SRCDIR)/init_fract.c $(SRCDIR)/utils_hooks.c \
                $(SRCDIR)/utils_win_mgmt.c $(SRCDIR)/utils_transformation.c \
 			   $(SRCDIR)/mandelbrot.c $(SRCDIR)/utils_complex.c	#double check later
 FRACTOL_OBJ = $(FRACTOL_SRCS:.c=.o)

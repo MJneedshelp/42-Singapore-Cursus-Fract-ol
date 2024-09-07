@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:13:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/07 15:24:28 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 19:41:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ void	img_pixel_put(t_img *img, int x, int y, int color)
 }
 
 
-/* Description: function to be used in mlx_loop_hook when there are no events
-   XXXXXXX
-*/
-int	hook_no_event(t_fract *fract)
-{
-	if (fract->win_ptr != NULL && fract->event == 1)
-	{
-		draw_mandelbrot(&(fract->img), fract);
-		mlx_put_image_to_window(fract->mlx_ptr, fract->win_ptr, fract->img.mlx_img, 0, 0);
-		fract->event = 0;
-	}
-	return (0);
-}
+// /* Description: function to be used in mlx_loop_hook when there are no events
+//    XXXXXXX
+// */
+// int	hook_no_event(t_fract *fract)
+// {
+// 	if (fract->win_ptr != NULL && fract->event == 1)
+// 	{
+// 		// draw_mandelbrot(&(fract->img), fract);
+// 		// mlx_put_image_to_window(fract->mlx_ptr, fract->win_ptr, fract->img.mlx_img, 0, 0);
+// 		fract->event = 0;
+// 	}
+// 	return (0);
+// }
 
 
 

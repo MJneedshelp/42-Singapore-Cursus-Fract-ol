@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 09:10:59 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/05 19:49:13 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 19:38:05 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_mandelbrot(t_cmplx input, int no_iter)
 		- Not in set: colour white
 */
 
-int	draw_mandelbrot(t_img *img, t_fract *fract)
+int	draw_mandelbrot(t_img *img, t_fract fract)
 {
 	int		x;
 	int		y;
@@ -77,6 +77,7 @@ int	draw_mandelbrot(t_img *img, t_fract *fract)
 		}
 		x++;
 	}
+	mlx_put_image_to_window(fract.mlx_ptr, fract.win_ptr, fract.img.mlx_img, 0, 0);
 }
 
 // int	main(void)

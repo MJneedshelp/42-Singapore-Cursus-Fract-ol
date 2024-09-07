@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:20:22 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/07 18:23:51 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/07 19:45:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include "../include/ft_printf.h"
 #include "../include/get_next_line.h"
 #include "../include/fractol.h"
-#include <mlx.h>
-#include <math.h>
-
-
-
-
 
 
 int	main(int argc, char *argv[])
@@ -35,7 +29,7 @@ int	main(int argc, char *argv[])
 	printf("mlx_ptr: %p | win_ptr: %p | or_a: %f | or_b: %f | mag: %f | iter: %d\n", fract.mlx_ptr, fract.win_ptr, fract.or_a, fract.or_b, fract.mag, fract.iter);
 	printf("mlx_img: %p | addr: %p | Bits per pixel: %d | line size: %d | endian: %d\n", fract.img.mlx_img, fract.img.addr, fract.img.bpp, fract.img.line_len, fract.img.endian);
 
-
+	draw_mandelbrot(&(fract.img), fract);
 
 
 	// mlx_mouse_hook(fract->win_ptr, hook_mouse_event, fract);
@@ -48,7 +42,7 @@ int	main(int argc, char *argv[])
 	// draw_mandelbrot(&(fract->img), fract);
 	// mlx_put_image_to_window(fract->mlx_ptr, fract->win_ptr, fract->img.mlx_img, 0, 0);
 
-	// mlx_loop(fract->mlx_ptr);
+	mlx_loop(fract.mlx_ptr);
 	// printf("Magnification Factor: %f | Origin a: %f | Origin b: %f\n", fract->mag, fract->or_a, fract->or_b);
 
 
@@ -61,6 +55,6 @@ int	main(int argc, char *argv[])
 	//loop hook function checks if event is 1 to execute the draw fractal
 	//this var should start at 1 to draw at the start
 
-	// end_prog(fract);
+	end_prog(fract);
 
 }
