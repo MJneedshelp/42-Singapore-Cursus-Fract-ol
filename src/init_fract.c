@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_init.c                                       :+:      :+:    :+:   */
+/*   init_fract.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 01:09:25 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/07 19:26:21 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/08 14:33:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,16 @@ t_fract	init_fract(void)
 }
 
 
+void	img_pixel_put(t_img *img, int x, int y, int color)
+{
+	char	*pixel;
+
+	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	*(unsigned int *)pixel = color;
+}
+
+
+
 
 
 
@@ -169,33 +179,4 @@ t_fract	init_fract(void)
 // 	// mlx_get_data_addr(fract->img->mlx_img, fract->img->bpp, fract->img->line_len, fract->img->endian);
 // 	// printf("img bpp value: %d\n", fract->img->bpp);
 // 	return (fract);
-// }
-
-
-void	end_prog(t_fract fract)
-{
-	mlx_destroy_window(fract.mlx_ptr, fract.win_ptr);
-	fract.win_ptr = NULL;
-
-	mlx_destroy_display(fract.mlx_ptr);
-	mlx_destroy_image(fract.mlx_ptr, &fract.img);
-	free (fract.mlx_ptr);
-	free (fract.img.addr);
-	free (fract.img.mlx_img);
-	//Probably need to clear up the img pointer as well
-
-
-	exit (EXIT_SUCCESS);
-
-}
-
-
-
-
-
-// int	main(int argc, char *argv[])
-// {
-// 	printf("Argc: %d | argv[1]: %s \n", argc, argv[1]);
-// 	check_inputs(argc, argv);
-// 	printf("Input validated\n");
 // }

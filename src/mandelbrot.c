@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 09:10:59 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/07 19:38:05 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/08 15:00:19 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 #include "../include/ft_printf.h"
 #include "../include/get_next_line.h"
 #include "../include/fractol.h"
+
+/* Description: translates and scale pixel coordinates based on the defined
+   XXXXXXX WRITE THIS LATER WHEN YOU GET ALL YOUR TERMS DOWN
+
+*/
+
+t_cmplx	tf_pixel_to_cmplx(int p_x, int p_y, t_fract *fract)
+{
+	t_cmplx	res;
+
+	res.re = fract->mag * ((double)p_x / WIN_LEN * U_A - (U_A / 2)) + \
+	fract->or_a;
+	res.img = fract->mag * ((double)-p_y / WIN_HT * U_B + (U_B / 2)) + \
+	fract->or_b;
+	return (res);
+}
 
 /* Description: checks if a given complex number is part of the mandelbrot set
    given the number of iterations n.
@@ -56,7 +72,7 @@ int	check_mandelbrot(t_cmplx input, int no_iter)
 		- Not in set: colour white
 */
 
-int	draw_mandelbrot(t_img *img, t_fract fract)
+int	draw_mandelbrot(t_img *img, t_fract *fract)
 {
 	int		x;
 	int		y;
@@ -69,7 +85,7 @@ int	draw_mandelbrot(t_img *img, t_fract fract)
 		while (y < WIN_HT)
 		{
 			pix = tf_pixel_to_cmplx(x, y, fract);
-			if (check_mandelbrot(pix, DEF_ITER) == 0)
+			if (check_mandelbrot(pix, fract->iter) == 0)
 				img_pixel_put(img, x, y, COLOR_BLACK);
 			else
 				img_pixel_put(img, x, y, COLOR_WHITE);
@@ -77,7 +93,8 @@ int	draw_mandelbrot(t_img *img, t_fract fract)
 		}
 		x++;
 	}
-	mlx_put_image_to_window(fract.mlx_ptr, fract.win_ptr, fract.img.mlx_img, 0, 0);
+	mlx_put_image_to_window(fract->mlx_ptr, fract->win_ptr, fract->img.mlx_img, 0, 0);
+	return (0);
 }
 
 // int	main(void)
