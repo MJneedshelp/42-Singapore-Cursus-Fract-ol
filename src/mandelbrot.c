@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 09:10:59 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/08 15:00:19 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/09 09:00:11 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	check_mandelbrot(t_cmplx input, int no_iter)
 	t_cmplx	term;
 	int		i;
 
-	term.re = 0;
-	term.img = 0;
+	term.re = 0.0;
+	term.img = 0.0;
 	i = 0;
 	while (i < no_iter)
 	{
@@ -61,6 +61,41 @@ int	check_mandelbrot(t_cmplx input, int no_iter)
 	}
 	return (0);
 }
+
+
+/* Description: checks if a given complex number is part of the mandelbrot set
+   given the number of iterations n.
+   Actions:
+	- Calculate the ith term of the mandelbrot equation for each iteration
+	  until the nth term term
+	  	- Mandelbrot equation: Z_n+1 = (Z_n)^2 + C
+	- Check the magnitude of the ith term
+		- If the magnitude |z_i| =< 2: part of the mandelbrot set
+		- If the magnitude |z_i| > 2: not part of the mandelbrot set. Break and
+		return the number of iterations when the it diverges
+	- Return 0 if |z_n| =< 2
+	XXXXXXX UPDATE THIS FOR JULIA SET LATER
+*/
+
+int	check_julia(t_cmplx input, t_cmplx c_term, int no_iter)
+{
+	t_cmplx	term;
+	int		i;
+
+	term.re = input.re;
+	term.img = input.img;
+	i = 0;
+	while (i < no_iter)
+	{
+		term = sum_cmplx(sqr_cmplx(term), c_term);
+		i++;
+		if (magnitude_cmplx(term) > 2)
+			return (i);
+	}
+	return (0);
+}
+
+
 
 
 /* Description: Draw the mandelbrot fractal into an image.
@@ -78,24 +113,47 @@ int	draw_mandelbrot(t_img *img, t_fract *fract)
 	int		y;
 	t_cmplx	pix;
 
+	t_cmplx	c_term;
+
+	c_term.re = 0.285;
+	c_term.img = 0.01;
+
 	x = 0;
 	while (x < WIN_LEN)
 	{
 		y = 0;
 		while (y < WIN_HT)
 		{
+			// pix = tf_pixel_to_cmplx(x, y, fract);
+			// if (check_mandelbrot(pix, fract->iter) == 0)
+			// 	img_pixel_put(img, x, y, COLOR_BLACK);
+			// else
+			// 	img_pixel_put(img, x, y, COLOR_WHITE);
+			// y++;
+
+
 			pix = tf_pixel_to_cmplx(x, y, fract);
-			if (check_mandelbrot(pix, fract->iter) == 0)
+			if (check_julia(pix, c_term, fract->iter) == 0)
 				img_pixel_put(img, x, y, COLOR_BLACK);
 			else
 				img_pixel_put(img, x, y, COLOR_WHITE);
 			y++;
+
+
+
 		}
 		x++;
 	}
 	mlx_put_image_to_window(fract->mlx_ptr, fract->win_ptr, fract->img.mlx_img, 0, 0);
 	return (0);
 }
+
+
+
+
+
+
+
 
 // int	main(void)
 // {
