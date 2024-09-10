@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 09:10:59 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/09 09:00:11 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:46:46 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,20 @@ int	check_mandelbrot(t_cmplx input, int no_iter)
 }
 
 
-/* Description: checks if a given complex number is part of the mandelbrot set
-   given the number of iterations n.
+/* Description: checks if a given complex number is part of the julia set
+   given the number of iterations n as well as the real and imaginary terms of
+   the complex number in the julia set.
    Actions:
-	- Calculate the ith term of the mandelbrot equation for each iteration
+	- Calculate the ith term of the julia equation for each iteration
 	  until the nth term term
-	  	- Mandelbrot equation: Z_n+1 = (Z_n)^2 + C
+	  	- Julia equation: Z_n+1 = (Z_n)^2 + C
+		- Z_0: current position on the complex plan
+		- C: given complex term
 	- Check the magnitude of the ith term
-		- If the magnitude |z_i| =< 2: part of the mandelbrot set
-		- If the magnitude |z_i| > 2: not part of the mandelbrot set. Break and
+		- If the magnitude |z_i| =< 2: part of the julia set
+		- If the magnitude |z_i| > 2: not part of the julia set. Break and
 		return the number of iterations when the it diverges
 	- Return 0 if |z_n| =< 2
-	XXXXXXX UPDATE THIS FOR JULIA SET LATER
 */
 
 int	check_julia(t_cmplx input, t_cmplx c_term, int no_iter)
@@ -131,16 +133,27 @@ int	draw_mandelbrot(t_img *img, t_fract *fract)
 			// 	img_pixel_put(img, x, y, COLOR_WHITE);
 			// y++;
 
-
+			// if (check_julia(pix, c_term, fract->iter) == 0)
+			// 	img_pixel_put(img, x, y, COLOR_BLACK);
+			// else
+			// 	img_pixel_put(img, x, y, COLOR_WHITE);
+			// y++;
 			pix = tf_pixel_to_cmplx(x, y, fract);
-			if (check_julia(pix, c_term, fract->iter) == 0)
-				img_pixel_put(img, x, y, COLOR_BLACK);
+			if (fract->set == 1)
+			{
+				if (check_mandelbrot(pix, fract->iter) == 0)
+					img_pixel_put(img, x, y, COLOR_BLACK);
+				else
+					img_pixel_put(img, x, y, COLOR_WHITE);
+			}
 			else
-				img_pixel_put(img, x, y, COLOR_WHITE);
+			{
+				if (check_julia(pix, c_term, fract->iter) == 0)
+					img_pixel_put(img, x, y, COLOR_BLACK);
+				else
+					img_pixel_put(img, x, y, COLOR_WHITE);
+			}
 			y++;
-
-
-
 		}
 		x++;
 	}

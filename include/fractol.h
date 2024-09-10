@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/09 08:32:45 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/10 11:43:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_cmplx_number
+{
+	double	re;
+	double	img;
+}	t_cmplx;
+
 typedef struct s_fract
 {
 	void	*mlx_ptr;
@@ -52,14 +58,9 @@ typedef struct s_fract
 	double	mag;
 	int		iter;
 	int		event;
+	int		set;	//1 is mandelbrot, 0 is julia
+	t_cmplx	c_term;
 }	t_fract;
-
-typedef struct s_cmplx_number
-{
-	double	re;
-	double	img;
-}	t_cmplx;
-
 
 
 /* Initialisation functions */
@@ -77,7 +78,7 @@ void	end_prog(t_fract fract);
 /* Hook functions */
 int		hook_no_event(t_fract *fract);
 int		hook_key_event(int keysym, t_fract *fract);
-//int		mouse_event(int button, int x, int y, t_fract *fract);
+// int		mouse_event(int button, int x, int y, t_fract *fract);
 
 int		hook_keypress(int keysym, t_fract *fract);
 int		hook_keyrelease(int keysym, t_fract *fract);
