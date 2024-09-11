@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mintan <mintan@student.42singapore.sg      +#+  +:+       +#+         #
+#    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 22:10:59 by mintan            #+#    #+#              #
-#    Updated: 2024/06/05 21:42:44 by mintan           ###   ########.fr        #
+#    Updated: 2024/09/11 09:34:47 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SOURCES = ft_atoi.c ft_atol.c ft_lstiter.c ft_puthexa.c ft_strlcpy.c \
 		  ft_memset.c ft_strdup.c ft_toupper.c ft_lstadd_front.c ft_printf.c \
 		  ft_striteri.c ft_lstclear.c ft_putchar_fd.c ft_strjoin.c \
 		  ft_pathjoin.c ft_lstdelone.c ft_putendl_fd.c ft_strlcat.c \
-		  ft_least.c get_next_line.c get_next_line_utils.c
+		  ft_least.c get_next_line.c get_next_line_utils.c ft_atod.c
 OBJECTS = $(SOURCES:.c=.o)
 
 # Target to make using Make all
