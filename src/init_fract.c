@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 01:09:25 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/08 14:33:45 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 08:29:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,44 @@ void	print_error(void)
 	exit (EXIT_FAILURE);
 }
 
+
+/* Description: Takes in a string and checks if all characters are digits.
+   - Allows for ' ', '\t', '\r', at the start of the string.
+   - Allows for either 1 '+' or '-' after the spaces, before the digits
+   - return:
+		- 1: the string is numeric
+		- 0: the string is not numeric
+   */
+
+int	check_numeric(char *str)
+{
+	int	ctr;
+	int	dot;
+
+	ctr = 0;
+	dot = 0;
+	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
+		str++;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str != '\0')
+	{
+		if (*str == '.')
+		{
+			dot++;
+			if (dot > 1)
+				return (0);
+		}
+		else if (ft_isdigit(*str) == 0)
+			return (0);
+		else
+			ctr++;
+		str++;
+	}
+	if (ctr < 1)
+		return (0);
+	return (1);
+}
 
 
 
@@ -63,7 +101,7 @@ void	check_inputs(int argc, char* argv[])
 		{
 			if (argc != 4)
 				print_error();
-
+			if
 			//check for double
 			return ;
 		}

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:20:22 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/08 15:03:22 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 08:07:49 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,32 @@ int	main(int argc, char *argv[])
 
 
 
+}
+
+
+
+
+
+
+int	check_numeric(char *str)
+{
+	int	i;
+	int	dot;
+
+	i = 0;
+	dot = 0;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '.')
+			dot++;
+		else if (ft_isdigit(str[i]) == 0)
+			return (0);
+
+		i++;
+	}
+	return (1);
 }
