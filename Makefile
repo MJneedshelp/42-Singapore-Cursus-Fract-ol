@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 22:10:59 by mintan            #+#    #+#              #
-#    Updated: 2024/09/08 15:01:36 by mintan           ###   ########.fr        #
+#    Updated: 2024/09/12 09:46:08 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ NAME = fractol
 SRCDIR = src
 LIBDIR = $(SRCDIR)/libft
 LIBFT_LIB = $(LIBDIR)/libft.a
-FRACTOL_SRCS = $(SRCDIR)/main.c $(SRCDIR)/init_fract.c $(SRCDIR)/init_events.c\
-               $(SRCDIR)/utils_complex.c $(SRCDIR)/mandelbrot.c	#double check later
+FRACTOL_SRCS = $(SRCDIR)/main.c $(SRCDIR)/init_fract.c \
+               $(SRCDIR)/init_events.c $(SRCDIR)/init_checks.c \
+			   $(SRCDIR)/utils_complex.c $(SRCDIR)/draw_fractal.c	#double check later
 FRACTOL_OBJ = $(FRACTOL_SRCS:.c=.o)
 
 # Target to make using Make all

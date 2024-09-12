@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   draw_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 09:10:59 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/10 15:46:46 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 09:44:55 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,16 +109,11 @@ int	check_julia(t_cmplx input, t_cmplx c_term, int no_iter)
 		- Not in set: colour white
 */
 
-int	draw_mandelbrot(t_img *img, t_fract *fract)
+int	draw_fractal(t_img *img, t_fract *fract)
 {
 	int		x;
 	int		y;
 	t_cmplx	pix;
-
-	t_cmplx	c_term;
-
-	c_term.re = 0.285;
-	c_term.img = 0.01;
 
 	x = 0;
 	while (x < WIN_LEN)
@@ -126,18 +121,6 @@ int	draw_mandelbrot(t_img *img, t_fract *fract)
 		y = 0;
 		while (y < WIN_HT)
 		{
-			// pix = tf_pixel_to_cmplx(x, y, fract);
-			// if (check_mandelbrot(pix, fract->iter) == 0)
-			// 	img_pixel_put(img, x, y, COLOR_BLACK);
-			// else
-			// 	img_pixel_put(img, x, y, COLOR_WHITE);
-			// y++;
-
-			// if (check_julia(pix, c_term, fract->iter) == 0)
-			// 	img_pixel_put(img, x, y, COLOR_BLACK);
-			// else
-			// 	img_pixel_put(img, x, y, COLOR_WHITE);
-			// y++;
 			pix = tf_pixel_to_cmplx(x, y, fract);
 			if (fract->set == 1)
 			{
@@ -148,7 +131,7 @@ int	draw_mandelbrot(t_img *img, t_fract *fract)
 			}
 			else
 			{
-				if (check_julia(pix, c_term, fract->iter) == 0)
+				if (check_julia(pix, fract->j_term, fract->iter) == 0)
 					img_pixel_put(img, x, y, COLOR_BLACK);
 				else
 					img_pixel_put(img, x, y, COLOR_WHITE);

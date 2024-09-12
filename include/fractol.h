@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/10 11:43:22 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 09:41:40 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,20 @@ typedef struct s_fract
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
+	// char	*set;
 	double	or_a;
 	double	or_b;
 	double	mag;
 	int		iter;
 	int		event;
 	int		set;	//1 is mandelbrot, 0 is julia
-	t_cmplx	c_term;
+	t_cmplx	j_term;
 }	t_fract;
 
 
 /* Initialisation functions */
-t_fract	init_fract(void);
+void	check_inputs(int argc, char* argv[]);
+t_fract	init_fract(char *argv[]);
 void	init_parameters(t_fract *fract);
 void	init_events(t_fract *fract);
 
@@ -86,7 +88,6 @@ int		hook_keyrelease(int keysym, t_fract *fract);
 void	img_pixel_put(t_img *img, int x, int y, int color);
 
 
-// int		draw_rect(t_fract *fract, t_rect rect);
 
 /* Window management functions */
 int		close_window(t_fract *fract);
@@ -106,7 +107,7 @@ t_cmplx	tf_pixel_to_cmplx(int p_x, int p_y, t_fract *fract);
 
 /* Mandelbrot set functions */
 int	check_mandelbrot(t_cmplx input, int no_iter);
-int	draw_mandelbrot(t_img *img, t_fract *fract);
+int	draw_fractal(t_img *img, t_fract *fract);
 
 
 
