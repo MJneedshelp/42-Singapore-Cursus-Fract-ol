@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 01:09:25 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/12 09:48:53 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 12:09:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void	init_set(t_fract *fract, char *argv[])
 		fract->j_term.img = ft_atod(argv[3]);
 	}
 }
-
-
 
 
 /* Description: Initialises the fract structure.

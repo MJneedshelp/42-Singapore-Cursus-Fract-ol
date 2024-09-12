@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:52:13 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/12 11:42:10 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 17:09:11 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <stdint.h>
 
 # define WIN_HT 600.0
 # define WIN_LEN 800.0
@@ -72,13 +73,13 @@ void	init_events(t_fract *fract);
 
 
 
-/* Utility functions */
+// /* Utility functions */
 
-void	end_prog(t_fract fract);
+// void	end_prog(t_fract fract);
 
 
 /* Hook functions */
-int		hook_no_event(t_fract *fract);
+int		no_event(t_fract *fract);
 int		hook_key_event(int keysym, t_fract *fract);
 // int		mouse_event(int button, int x, int y, t_fract *fract);
 

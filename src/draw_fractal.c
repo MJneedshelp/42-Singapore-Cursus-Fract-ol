@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 09:10:59 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/12 09:44:55 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 18:20:26 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,45 @@ int	check_julia(t_cmplx input, t_cmplx c_term, int no_iter)
 }
 
 
+int	gen_colour(int iter)
+{
+	uint8_t	red;
+	uint8_t green;
+	uint8_t	blue;
+
+	red = 255;
+	blue = 255;
+	green = 255;
+
+	if (iter <= 14)
+	{
+		red = (uint8_t)((iter - 42) / 200 * 255);
+	}
+	else if (iter >= 15 && iter <= 28)
+	{
+		blue = (uint8_t)((iter - 42) / 400 * 255);
+	}
+	else if (iter >= 29 && iter <= 42)
+	{
+		green = (uint8_t)((iter - 42) / 600 * 255);
+	}
+	else if (iter >= 43 && iter <= 82)
+	{
+		red = (uint8_t)((iter - 42) / 200 * 255);
+	}
+	else if (iter >= 83 && iter <= 122)
+	{
+		blue = (uint8_t)((iter - 42) / 400 * 255);
+	}
+	else if (iter >= 123 && iter <= 162)
+	{
+		green = (uint8_t)((iter - 42) / 600 * 255);
+	}
+	// printf("Red: %d | Green: %d | Blue: %d\n", red, green, blue);
+	return (red << 16 | green << 8 | blue);
+}
+
+
 
 
 /* Description: Draw the mandelbrot fractal into an image.
@@ -114,6 +153,7 @@ int	draw_fractal(t_img *img, t_fract *fract)
 	int		x;
 	int		y;
 	t_cmplx	pix;
+	int		esc;
 
 	x = 0;
 	while (x < WIN_LEN)
@@ -124,17 +164,19 @@ int	draw_fractal(t_img *img, t_fract *fract)
 			pix = tf_pixel_to_cmplx(x, y, fract);
 			if (fract->set == 1)
 			{
-				if (check_mandelbrot(pix, fract->iter) == 0)
+				esc = check_mandelbrot(pix, fract->iter);
+				if (esc == 0)
 					img_pixel_put(img, x, y, COLOR_BLACK);
 				else
-					img_pixel_put(img, x, y, COLOR_WHITE);
+					img_pixel_put(img, x, y, gen_colour(esc)); //use the return value to do smth with colour here
 			}
 			else
 			{
-				if (check_julia(pix, fract->j_term, fract->iter) == 0)
+				esc = check_julia(pix, fract->j_term, fract->iter);
+				if (esc == 0)
 					img_pixel_put(img, x, y, COLOR_BLACK);
 				else
-					img_pixel_put(img, x, y, COLOR_WHITE);
+					img_pixel_put(img, x, y, gen_colour(esc)); //use the return value to do smth with colour here
 			}
 			y++;
 		}

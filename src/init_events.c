@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 14:04:54 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/12 11:53:56 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 12:14:29 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../include/get_next_line.h"
 #include "../include/fractol.h"
 
-/* Description: XXXXXXX
+/* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 */
 
 static	int	mouse_event(int button, int x, int y, t_fract *fract)
@@ -38,10 +38,10 @@ static	int	mouse_event(int button, int x, int y, t_fract *fract)
 	return (0);
 }
 
-/* Description: XXXXXXX
+/* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 */
 
-int	hook_keypress(int keysym, t_fract *fract)
+int	key_event(int keysym, t_fract *fract)
 {
 	printf("Key: %d pressed\n", keysym);
 	fract->event = 1;
@@ -63,6 +63,18 @@ int	hook_keypress(int keysym, t_fract *fract)
 		init_parameters(fract);
 	printf("or_a: %f | or_b: %f | mag: %f | iter: %d\n", fract->or_a, fract->or_b, fract->mag, fract->iter);
 	// draw_fractal(&(fract->img), fract);
+	return (0);
+}
+
+
+int	no_event(t_fract *fract)
+{
+	printf("Inside no events. Fract->event: %d\n", fract->event);
+	if (fract->event == 1)
+	{
+		draw_fractal(&(fract->img), fract);
+		fract->event = 0;
+	}
 	return (0);
 }
 
@@ -96,5 +108,5 @@ void	init_events(t_fract *fract)
 {
 	mlx_mouse_hook(fract->win_ptr, mouse_event, fract);
 	mlx_hook(fract->win_ptr, DestroyNotify, NoEventMask, close_window, fract);
-	mlx_hook(fract->win_ptr, KeyPress, KeyPressMask, hook_keypress, fract);
+	mlx_hook(fract->win_ptr, KeyPress, KeyPressMask, key_event, fract);
 }
