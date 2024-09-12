@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:20:22 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/12 09:44:48 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 11:41:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int argc, char *argv[])
 	printf("mlx_ptr: %p | win_ptr: %p | or_a: %f | or_b: %f | mag: %f | iter: %d\n", fract.mlx_ptr, fract.win_ptr, fract.or_a, fract.or_b, fract.mag, fract.iter);
 	printf("mlx_img: %p | addr: %p | Bits per pixel: %d | line size: %d | endian: %d\n", fract.img.mlx_img, fract.img.addr, fract.img.bpp, fract.img.line_len, fract.img.endian);
 	init_events(&fract);
-	draw_fractal(&(fract.img), &fract);
+	// draw_fractal(&(fract.img), &fract);
+	mlx_loop_hook(fract.mlx_ptr, &draw_fractal, &fract);
 
 	mlx_loop(fract.mlx_ptr);
 	// printf("Magnification Factor: %f | Origin a: %f | Origin b: %f\n", fract->mag, fract->or_a, fract->or_b);

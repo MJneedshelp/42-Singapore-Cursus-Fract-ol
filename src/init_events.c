@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 14:04:54 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/12 09:45:34 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/12 11:53:56 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "../include/get_next_line.h"
 #include "../include/fractol.h"
 
-
+/* Description: XXXXXXX
+*/
 
 static	int	mouse_event(int button, int x, int y, t_fract *fract)
 {
@@ -33,11 +34,12 @@ static	int	mouse_event(int button, int x, int y, t_fract *fract)
 		fract->event = 1;
 	}
 	printf("or_a: %f | or_b: %f | mag: %f | iter: %d\n", fract->or_a, fract->or_b, fract->mag, fract->iter);
-	draw_fractal(&(fract->img), fract);
+	// draw_fractal(&(fract->img), fract);
 	return (0);
 }
 
-
+/* Description: XXXXXXX
+*/
 
 int	hook_keypress(int keysym, t_fract *fract)
 {
@@ -60,9 +62,12 @@ int	hook_keypress(int keysym, t_fract *fract)
 	else if (keysym == XK_space)
 		init_parameters(fract);
 	printf("or_a: %f | or_b: %f | mag: %f | iter: %d\n", fract->or_a, fract->or_b, fract->mag, fract->iter);
-	draw_fractal(&(fract->img), fract);
+	// draw_fractal(&(fract->img), fract);
 	return (0);
 }
+
+
+
 
 
 /* Description: Closes the window, destroys the image and destroys the display.
