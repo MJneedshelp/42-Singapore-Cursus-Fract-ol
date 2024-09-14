@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 14:04:54 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/12 12:14:29 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/13 01:31:35 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	key_event(int keysym, t_fract *fract)
 
 int	no_event(t_fract *fract)
 {
-	printf("Inside no events. Fract->event: %d\n", fract->event);
 	if (fract->event == 1)
 	{
 		draw_fractal(&(fract->img), fract);
