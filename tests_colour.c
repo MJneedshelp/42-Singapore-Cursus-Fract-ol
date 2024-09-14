@@ -28,15 +28,33 @@ int	gen_colour(int iter)
 }
 
 
+int	rngsus(int iter, int comparison)
+{
+	int	roll;
+
+	roll = ((iter ^ comparison) + 42) % 255;
+	return (roll);
+}
+
+
 
 int	main(void)
 {
 	double	result;
+	int		iter;
 
 	result = (65.0 / 200.0) * 255.0;
+	iter = 42;
+	iter = 42 * 1.01 * 1.01 * 1.01 * 1.01 * 1.01;
+	printf("Print test int multiplication: %d\n", iter);
+	iter = iter / 1.01 / 1.01 / 1.01 / 1.01 / 1.01;
+	printf("Print test int division: %d\n", iter);
+	printf("Dice roll: %d\n", rngsus(42, 42));
 
-	printf("Result: %d\n", (uint8_t)result);
-	gen_colour(0);
+
+	// gen_colour(0);
+	// printf("Result: %d\n", (uint8_t)result);
+
 }
 
 

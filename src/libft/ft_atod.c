@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 11:08:26 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/11 09:35:57 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/14 16:47:18 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	double	calc_decimal(const char *str)
 	dec = 0;
 	while (*str >= '0' && *str <= '9')
 	{
-		dec = dec + (*str++ - 48)/(pow(10, ctr));
+		dec = dec + (*str++ - 48) / (pow(10, ctr));
 		ctr++;
 	}
 	return (dec);

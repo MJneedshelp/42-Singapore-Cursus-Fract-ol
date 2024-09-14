@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_prngsus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 16:20:22 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/14 16:47:47 by mintan           ###   ########.fr       */
+/*   Created: 2024/09/14 13:00:44 by mintan            #+#    #+#             */
+/*   Updated: 2024/09/14 13:01:10 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
-#include "../include/ft_printf.h"
-#include "../include/get_next_line.h"
-#include "../include/fractol.h"
+/* Description: pseudo random integer generator. Takes in a 2 parameters,
+   and does some funky mathematics to generate another number within the
+   range of 0 - mod.
+*/
 
-int	main(int argc, char *argv[])
+int	ft_prngsus(int iter, int base, int mod)
 {
-	t_fract	fract;
+	int	roll;
 
-	check_inputs(argc, argv);
-	fract = init_fract(argv);
-	init_events(&fract);
-	mlx_loop_hook(fract.mlx_ptr, &no_event, &fract);
-	mlx_loop(fract.mlx_ptr);
+	roll = ((iter ^ base) + 42) % mod;
+	return (roll);
 }

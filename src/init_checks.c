@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:05:49 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/12 09:18:39 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/14 17:13:16 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,18 @@
 #include "../include/get_next_line.h"
 #include "../include/fractol.h"
 
-
-
 /* Description: prints out an error message. Function is used when the inputs
    into the programme are unexpected. Exits the programme afterwards.
 */
-void	print_error(void)
+static void	print_error(void)
 {
-	ft_putendl_fd("Please run the programmme in the following ways:", 2);
+	ft_putendl_fd("Please run the programmme in the following ways ONLY:", 2);
 	ft_putendl_fd("./fractol mandelbrot OR", 2);
 	ft_putendl_fd("./fractol julia <value 1> <value 2>", 2);
-	ft_putendl_fd("where <value 1> and <value 2> are both doubles. E.g.",2);
+	ft_putendl_fd("where <value 1> and <value 2> are both doubles. E.g.", 2);
 	ft_putendl_fd("./fractol julia 0.285 0.01", 2);
 	exit (EXIT_FAILURE);
 }
-
 
 /* Description: Takes in a string and checks if all characters are digits.
    - Allows for ' ', '\t', '\r', at the start of the string.
@@ -40,14 +37,14 @@ void	print_error(void)
 		- 0: the string is not numeric
    */
 
-int	check_numeric(char *str)
+static int	check_numeric(char *str)
 {
 	int	ctr;
 	int	dot;
 
 	ctr = 0;
 	dot = 0;
-	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
+	while (((*str >= '\t' && *str <= '\r') || *str == ' '))
 		str++;
 	if (*str == '+' || *str == '-')
 		str++;
@@ -83,7 +80,7 @@ int	check_numeric(char *str)
 	   - exit if any of the above conditons fail
 */
 
-void	check_inputs(int argc, char* argv[])
+void	check_inputs(int argc, char *argv[])
 {
 	if (argc == 1)
 		print_error();
@@ -109,28 +106,3 @@ void	check_inputs(int argc, char* argv[])
 			print_error();
 	}
 }
-
-
-// int	main(void)
-// {
-// 	printf("Check wrong: check_numeric: %d\n", check_numeric("wrong"));
-// 	printf("Check 12345: check_numeric: %d\n", check_numeric("12345"));
-// 	printf("Check +12345: check_numeric: %d\n", check_numeric("+12345"));
-// 	printf("Check -12345: check_numeric: %d\n", check_numeric("-12345"));
-// 	printf("Check ++12345: check_numeric: %d\n", check_numeric("++12345"));
-// 	printf("Check --12345: check_numeric: %d\n", check_numeric("--12345"));
-// 	printf("Check 12345.04: check_numeric: %d\n", check_numeric("12345.04"));
-// 	printf("Check 12345.0.4: check_numeric: %d\n", check_numeric("12345.0.4"));
-// 	printf("Check +12345.04: check_numeric: %d\n", check_numeric("+12345.04"));
-// 	printf("Check -12345.04: check_numeric: %d\n", check_numeric("-12345.04"));
-// 	printf("Check ++12345.04: check_numeric: %d\n", check_numeric("++12345.04"));
-// 	printf("Check --12345.04: check_numeric: %d\n", check_numeric("--12345.04"));
-// 	printf("Check 0.04: check_numeric: %d\n", check_numeric("0.04"));
-// 	printf("Check +0.04: check_numeric: %d\n", check_numeric("+0.04"));
-// 	printf("Check -0.04: check_numeric: %d\n", check_numeric("-0.04"));
-// 	printf("Check .04: check_numeric: %d\n", check_numeric(".04"));
-// 	printf("Check +: check_numeric: %d\n", check_numeric("+"));
-// 	printf("Check -: check_numeric: %d\n", check_numeric("-"));
-
-
-// }

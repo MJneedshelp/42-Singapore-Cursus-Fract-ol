@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 14:04:54 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/13 01:31:35 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/14 16:36:16 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,50 @@
 #include "../include/get_next_line.h"
 #include "../include/fractol.h"
 
-/* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+/* Description: events to be triggered when there are mouse events. Maps the
+   scroll up and down button to the magnification factor, the number of
+   iterations and the rng factor. Also converts the positon of the cursor and
+   sets it as the origin of the complex plane. Used in the mlx_hook function:
 */
 
-static	int	mouse_event(int button, int x, int y, t_fract *fract)
+int	mouse_event(int button, int x, int y, t_fract *fract)
 {
-	printf("Button: %d | position x: %d y: %d\n", button, x, y);
+	t_cmplx	pix;
+
+	pix = tf_pixel_to_cmplx(x, y, fract);
+	fract->or_a = pix.re;
+	fract->or_b = pix.img;
 	if (button == 5)
 	{
 		fract->mag = (fract->mag) / MAG_STEP;
-		// fract->iter = (fract->iter) / ITER_STEP;
+		fract->iter = fract->iter + 1;
+		fract->rng = fract->rng + 1;
 		fract->event = 1;
 	}
 	else if (button == 4)
 	{
 		fract->mag = (fract->mag) * MAG_STEP;
-		// fract->iter = (fract->iter) * ITER_STEP;
+		fract->iter = fract->iter - 1;
+		fract->rng = fract->rng -1;
 		fract->event = 1;
 	}
-	printf("or_a: %f | or_b: %f | mag: %f | iter: %d\n", fract->or_a, fract->or_b, fract->mag, fract->iter);
-	// draw_fractal(&(fract->img), fract);
 	return (0);
 }
 
-/* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+/* Description: events to be triggered when there are keyboard events.
+   Any button press sets the fract.event to 1 to trigger a new image to be
+   drawn. Used in the mlx_mouse_hook function:
+	- ESC: closes the window
+	- up, down, left, right: shifts the origin of the complex plane. This
+	  causes the image on the window to "move"
+	- + / ]: increase the number of iterations
+	- - / [: decreases the number of iterations
+	- space: resets the image to the original parameters, resetting the image
+	  to the default
 */
 
 int	key_event(int keysym, t_fract *fract)
 {
-	printf("Key: %d pressed\n", keysym);
 	fract->event = 1;
 	if (keysym == XK_Escape)
 		close_window(fract);
@@ -61,11 +76,13 @@ int	key_event(int keysym, t_fract *fract)
 		fract->iter -= 10;
 	else if (keysym == XK_space)
 		init_parameters(fract);
-	printf("or_a: %f | or_b: %f | mag: %f | iter: %d\n", fract->or_a, fract->or_b, fract->mag, fract->iter);
-	// draw_fractal(&(fract->img), fract);
 	return (0);
 }
 
+/* Description: function to be used in the mlx_loop_hook. Triggers the
+   draw_fractal function when an event occurs as events change the parameters
+   of the image.
+*/
 
 int	no_event(t_fract *fract)
 {
@@ -77,15 +94,13 @@ int	no_event(t_fract *fract)
 	return (0);
 }
 
-
-
-
-
 /* Description: Closes the window, destroys the image and destroys the display.
-   The function then exits the programme afterwards. This function is called
-   when the window is closed either with the ESC key or the X button on the
-   window is clicked.
+   This frees the memory allocated in the heap used by the minilibx. The
+   function then exits the programme afterwards. This function is called when
+   the window is closed either with the ESC key or the X button on the window
+   is clicked.
 */
+
 int	close_window(t_fract *fract)
 {
 	mlx_destroy_window(fract->mlx_ptr, fract->win_ptr);
@@ -98,9 +113,8 @@ int	close_window(t_fract *fract)
 	exit (EXIT_SUCCESS);
 }
 
-
-
-/* Description: initialises all the mouse and key events.
+/* Description: initialises all the mouse and key events using the
+   mlx_mouse_hook and the mlx_hook functions.
 */
 
 void	init_events(t_fract *fract)
