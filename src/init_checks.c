@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:05:49 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/14 17:13:16 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/14 17:53:17 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ static int	check_numeric(char *str)
 		}
 		else if (ft_isdigit(*str) == 0)
 			return (0);
-		else
-			ctr++;
+		ctr++;
 		str++;
 	}
 	if (ctr < 1)
