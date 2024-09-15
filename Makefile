@@ -6,15 +6,15 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 22:10:59 by mintan            #+#    #+#              #
-#    Updated: 2024/09/15 08:58:40 by mintan           ###   ########.fr        #
+#    Updated: 2024/09/15 09:10:44 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler + compile flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -Lminilibx-linux -lmlx -lXext -L/usr/lib/X11 -lX11 \
-           -lm -lz -Iminilibx-linux -O3
+MLXFLAGS = -Lminilibx-linux -lmlx -lXext -L/usr/lib/X11 -lX11 -lm -lz -O3\
+           -Iminilibx-linux
 
 # Definitions
 NAME = fractol
@@ -25,6 +25,9 @@ FRACTOL_SRCS = $(SRCDIR)/main.c $(SRCDIR)/init_fract.c \
                $(SRCDIR)/init_events.c $(SRCDIR)/init_checks.c \
 			   $(SRCDIR)/utils_complex.c $(SRCDIR)/draw_fractal.c	#double check later
 FRACTOL_OBJ = $(FRACTOL_SRCS:.c=.o)
+
+TESTDIR = testfolder
+TESTRREPO = https://github.com/42Paris/minilibx-linux.git
 
 # Target to make using Make all
 all: $(NAME) print_art
@@ -52,6 +55,11 @@ fclean: clean
 
 # Rule to rebuild the target
 re:	fclean all
+
+# Test Rule to git clone
+test:
+	git clone $(TESTRREPO) $(TESTDIR)
+
 
 # Phony targets
 .PHONY: all clean re fclean
