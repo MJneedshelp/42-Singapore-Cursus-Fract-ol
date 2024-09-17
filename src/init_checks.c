@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:05:49 by mintan            #+#    #+#             */
-/*   Updated: 2024/09/14 17:53:17 by mintan           ###   ########.fr       */
+/*   Updated: 2024/09/18 04:31:02 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	check_inputs(int argc, char *argv[])
 		{
 			if (argc != 4)
 				print_error();
-			if (check_numeric(argv[2]) == 0 || check_numeric(argv[2]) == 0)
+			if (check_numeric(argv[2]) == 0 || check_numeric(argv[3]) == 0)
 				print_error();
 			return ;
 		}
